@@ -57,13 +57,13 @@
             rdoShowLeastValuable = new RadioButton();
             rdoShowAll = new RadioButton();
             trbNumberToShow = new TrackBar();
-            dataGridView1 = new DataGridView();
+            dgvVerseDisplay = new DataGridView();
             mnsFileActions.SuspendLayout();
             grpAddVerse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudVerseImportance).BeginInit();
             grpFilterAndSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trbNumberToShow).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVerseDisplay).BeginInit();
             SuspendLayout();
             // 
             // mnsFileActions
@@ -344,20 +344,20 @@
             trbNumberToShow.Size = new Size(357, 45);
             trbNumberToShow.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvVerseDisplay
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(375, 27);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(704, 518);
-            dataGridView1.TabIndex = 4;
+            dgvVerseDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVerseDisplay.Location = new Point(375, 27);
+            dgvVerseDisplay.Name = "dgvVerseDisplay";
+            dgvVerseDisplay.Size = new Size(704, 518);
+            dgvVerseDisplay.TabIndex = 4;
             // 
             // FrmVerseList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1091, 762);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvVerseDisplay);
             Controls.Add(trbNumberToShow);
             Controls.Add(grpFilterAndSort);
             Controls.Add(grpAddVerse);
@@ -373,7 +373,7 @@
             grpFilterAndSort.ResumeLayout(false);
             grpFilterAndSort.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trbNumberToShow).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVerseDisplay).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -409,6 +409,6 @@
         private RadioButton rdoShowLeastValuable;
         private RadioButton rdoShowAll;
         private TrackBar trbNumberToShow;
-        private DataGridView dataGridView1;
+        private DataGridView dgvVerseDisplay;
     }
 }
