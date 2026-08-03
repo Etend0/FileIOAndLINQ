@@ -88,6 +88,7 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(100, 22);
             saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += TsmSaveClickEH;
             // 
             // loadToolStripMenuItem
             // 
