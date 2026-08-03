@@ -58,6 +58,7 @@
             rdoShowAll = new RadioButton();
             trbNumberToShow = new TrackBar();
             dgvVerseDisplay = new DataGridView();
+            btnAddVerse = new Button();
             mnsFileActions.SuspendLayout();
             grpAddVerse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudVerseImportance).BeginInit();
@@ -102,6 +103,7 @@
             // 
             // grpAddVerse
             // 
+            grpAddVerse.Controls.Add(btnAddVerse);
             grpAddVerse.Controls.Add(lblImportanceError);
             grpAddVerse.Controls.Add(lblTextError);
             grpAddVerse.Controls.Add(lblVerseError);
@@ -352,6 +354,16 @@
             dgvVerseDisplay.Size = new Size(704, 518);
             dgvVerseDisplay.TabIndex = 4;
             // 
+            // btnAddVerse
+            // 
+            btnAddVerse.Location = new Point(131, 433);
+            btnAddVerse.Name = "btnAddVerse";
+            btnAddVerse.Size = new Size(75, 23);
+            btnAddVerse.TabIndex = 18;
+            btnAddVerse.Text = "Add";
+            btnAddVerse.UseVisualStyleBackColor = true;
+            btnAddVerse.Click += BtnAddVerseClickEH;
+            // 
             // FrmVerseList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -410,5 +422,6 @@
         private RadioButton rdoShowAll;
         private TrackBar trbNumberToShow;
         private DataGridView dgvVerseDisplay;
+        private Button btnAddVerse;
     }
 }
