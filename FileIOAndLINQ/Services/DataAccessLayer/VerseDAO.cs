@@ -1,0 +1,51 @@
+﻿using FileIOAndLINQ.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/*
+ * Elijah Hodge
+ * CST - 250
+ * 08/02/2026
+ * File I/O and LINQ
+ * Activity 6
+ */
+
+namespace FileIOAndLINQ.Services.DataAccessLayer
+{
+    internal class VerseDAO
+    {
+        // Declare class level variables
+        List<VerseDataModel> _verses;
+
+        /// <summary>
+        /// Default constructor for VerseDAO
+        /// </summary>
+        public VerseDAO()
+        {
+            // Create a new List of VerseDataModels
+            _verses = new List<VerseDataModel>();
+        }
+
+        /// <summary>
+        /// Add a new verse to the inventory
+        /// </summary>
+        /// <param name="verse"></param>
+        /// <returns></returns>
+        public int AddVerse(VerseRequestModel verse)
+        {
+            // Declare and initialize
+            int id = _verses.Count + 1;
+            VerseDataModel newVerse = new VerseDataModel();
+
+            newVerse = new VerseDataModel(id, verse.Book, verse.Chapter,
+                verse.Verse, verse.Text, verse.Meaning, verse.Importance);
+            // Add the verse to the verses list
+            _verses.Add(newVerse);
+            // Do not increment the saved count here
+            return id;
+        }
+    }
+}
