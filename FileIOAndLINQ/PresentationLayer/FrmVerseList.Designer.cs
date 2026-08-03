@@ -34,6 +34,7 @@
             loadToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             grpAddVerse = new GroupBox();
+            btnAddVerse = new Button();
             lblImportanceError = new Label();
             lblTextError = new Label();
             lblVerseError = new Label();
@@ -58,7 +59,6 @@
             rdoShowAll = new RadioButton();
             trbNumberToShow = new TrackBar();
             dgvVerseDisplay = new DataGridView();
-            btnAddVerse = new Button();
             mnsFileActions.SuspendLayout();
             grpAddVerse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudVerseImportance).BeginInit();
@@ -72,7 +72,7 @@
             mnsFileActions.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             mnsFileActions.Location = new Point(0, 0);
             mnsFileActions.Name = "mnsFileActions";
-            mnsFileActions.Size = new Size(1091, 24);
+            mnsFileActions.Size = new Size(1163, 24);
             mnsFileActions.TabIndex = 0;
             mnsFileActions.Text = "menuStrip1";
             // 
@@ -128,6 +128,16 @@
             grpAddVerse.TabIndex = 1;
             grpAddVerse.TabStop = false;
             grpAddVerse.Text = "Add A Bible Verse";
+            // 
+            // btnAddVerse
+            // 
+            btnAddVerse.Location = new Point(131, 433);
+            btnAddVerse.Name = "btnAddVerse";
+            btnAddVerse.Size = new Size(75, 23);
+            btnAddVerse.TabIndex = 18;
+            btnAddVerse.Text = "Add";
+            btnAddVerse.UseVisualStyleBackColor = true;
+            btnAddVerse.Click += BtnAddVerseClickEH;
             // 
             // lblImportanceError
             // 
@@ -351,24 +361,14 @@
             dgvVerseDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVerseDisplay.Location = new Point(375, 27);
             dgvVerseDisplay.Name = "dgvVerseDisplay";
-            dgvVerseDisplay.Size = new Size(704, 518);
+            dgvVerseDisplay.Size = new Size(779, 518);
             dgvVerseDisplay.TabIndex = 4;
-            // 
-            // btnAddVerse
-            // 
-            btnAddVerse.Location = new Point(131, 433);
-            btnAddVerse.Name = "btnAddVerse";
-            btnAddVerse.Size = new Size(75, 23);
-            btnAddVerse.TabIndex = 18;
-            btnAddVerse.Text = "Add";
-            btnAddVerse.UseVisualStyleBackColor = true;
-            btnAddVerse.Click += BtnAddVerseClickEH;
             // 
             // FrmVerseList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1091, 762);
+            ClientSize = new Size(1163, 762);
             Controls.Add(dgvVerseDisplay);
             Controls.Add(trbNumberToShow);
             Controls.Add(grpFilterAndSort);

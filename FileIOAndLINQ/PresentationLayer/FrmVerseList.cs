@@ -33,6 +33,9 @@ namespace FileIOAndLINQ.PresentationLayer
         // Binding source for the data grid view
         private BindingSource _versesBindingSource;
 
+        /// <summary>
+        /// Default constructor for FrmVerseList
+        /// </summary>
         public FrmVerseList()
         {
             InitializeComponent();
@@ -96,7 +99,7 @@ namespace FileIOAndLINQ.PresentationLayer
             };
             // Populate cmbVerseBook with the list
             cmbVerseBook.DataSource = bibleBooks;
-            // Set the automatically selected book to -1 (none)
+            // Set the automatically selected book to -1
             cmbVerseBook.SelectedIndex = -1;
             // Set the combo box to suggest books based on the user typing
             cmbVerseBook.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -386,8 +389,12 @@ namespace FileIOAndLINQ.PresentationLayer
         {
             // Get the verses from the business logic layer
             List<VerseDisplayModel> verses = _verseLogic.GetAllVerses();
+
             // Set the data source for the binding source object
             _versesBindingSource.DataSource = verses;
+
+            // Set the data source for the data grid view
+            dgvVerseDisplay.DataSource = _versesBindingSource;
 
             // Format the data grid view
             FormatVersesDgv();
