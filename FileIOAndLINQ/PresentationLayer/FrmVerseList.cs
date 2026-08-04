@@ -34,9 +34,11 @@ namespace FileIOAndLINQ.PresentationLayer
         private BindingSource _versesBindingSource;
         // Filters for file dialogs
         string filter = "All Files (*.*)|*.*|" +
-        "Text Files (*.txt)|*.txt|" +
-        "CSV Files (*.csv)|*.csv|" +
-        "JSON Files (*.json)|*.json";
+            "Text Files (*.txt)|*.txt|" +
+            "CSV Files (*.csv)|*.csv|" +
+            "JSON Files (*.json)|*.json|" +
+            "Excel Files (*.xml)|*.xml|" +
+            "Excel Files (*.xlsx)|*.xlsx";
         // Store the number of verses to show
         private int _numToShow;
 
@@ -56,6 +58,8 @@ namespace FileIOAndLINQ.PresentationLayer
             _versesBindingSource = new BindingSource();
             // Set the number to show track bar max to 0
             trbNumberToShow.Maximum = 0;
+            // Update the lblVersesSaved label with the total number of verses
+            UpdateVersesSavedLabel();
         }
 
         /// <summary>
@@ -389,6 +393,9 @@ namespace FileIOAndLINQ.PresentationLayer
         {
             // Set the data source for the data grid view
             dgvVerseDisplay.DataSource = _versesBindingSource;
+
+            // Update the lblVersesSaved label with the total number of verses
+            UpdateVersesSavedLabel();
         }
 
         /// <summary>
@@ -459,6 +466,8 @@ namespace FileIOAndLINQ.PresentationLayer
                     result = _verseLogic.WriteVerseToFile(fileName);
                     // Show the result to the user
                     MessageBox.Show(result);
+                    // Update the lblVersesSaved label with the total number of verses
+                    UpdateVersesSavedLabel();
                 }
             }
         } // End of TmsSaveClickEH
@@ -493,6 +502,8 @@ namespace FileIOAndLINQ.PresentationLayer
                     // Display the result to the user
                     MessageBox.Show(result);
                     RefreshVersesDgv();
+                    // Update the lblVersesSaved label with the total number of verses
+                    UpdateVersesSavedLabel();
                 }
             }
         } // End of TsmLoadClickEH
@@ -554,6 +565,50 @@ namespace FileIOAndLINQ.PresentationLayer
         {
             // Refresh the dgv with all the users verses
             RefreshVersesDgv();
+        }
+
+        /// <summary>
+        /// Handles real-time searching and filtering of the verses based on user input in the search box
+        /// </summary>
+        private void TxtbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            // Get the search text and convert it to lower case for case insensitive searching
+            string search = txtbxSearch.Text.Trim().ToLower();
+            // Get all verses from the business logic layer
+            var allVerses = _verseLogic.GetAllVerses();
+            // Check if the search box is empty, if it is show all verses, otherwise filter the verses based on the search text
+            if (string.IsNullOrEmpty(search))
+            {
+                // Show all verses
+                _versesBindingSource.DataSource = allVerses;
+            }
+            else
+            {
+                // Filter the verses based on the search text and update the data source for the binding source
+                _versesBindingSource.DataSource = allVerses.FindAll(v =>
+                    (v.Reference != null && v.Reference.ToLower().Contains(search)) ||
+                    (v.Text != null && v.Text.ToLower().Contains(search)) ||
+                    (v.Meaning != null && v.Meaning.ToLower().Contains(search)) ||
+                    v.Importance.ToString().Contains(search)
+                );
+            }
+            // Format the data grid view after updating the data source
+            FormatVersesDgv();
+        }
+
+        /// <summary>
+        /// Updates the lblVersesSaved label with the total number of verses
+        /// </summary>
+        private void UpdateVersesSavedLabel()
+        {
+            // Check to make sure the verse logic variable and the label are not null
+            if (_verseLogic != null && lblVersesSaved != null)
+            {
+                // Get the total verse count from the business logic layer and update the label text
+                int total = _verseLogic.GetTotalVerseCount();
+                // Update the label text with the total number of verses
+                lblVersesSaved.Text = total.ToString();
+            }
         }
     }
 }

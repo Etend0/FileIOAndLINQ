@@ -92,12 +92,12 @@ namespace FileIOAndLINQ.Services.BusinessLogicLayer
         /// <summary>
         /// Get a list of the most important verses
         /// </summary>
-        /// <param name="numVersesSaved"></param>
+        /// <param name="numToFind"></param>
         /// <returns></returns>
-        public List<VerseDisplayModel> GetMostImportantVerses(int numVersesSaved)
+        public List<VerseDisplayModel> GetMostImportantVerses(int numToFind)
         {
             // Get a list of the most important data verses
-            List<VerseDataModel> dataVerses = _verseDAO.GetMostImportantVerses(numVersesSaved);
+            List<VerseDataModel> dataVerses = _verseDAO.GetMostImportantVerses(numToFind);
             return ConvertVerseDataToDisplay(dataVerses);
         }
 
@@ -125,6 +125,16 @@ namespace FileIOAndLINQ.Services.BusinessLogicLayer
             }
             // Return the list of VerseDisplayModels
             return displayVerses;
+        }
+
+        /// <summary>
+        /// Get the total count of verses
+        /// </summary>
+        /// <returns></returns>
+        public int GetTotalVerseCount()
+        {
+            // Call and return the DAO method
+            return _verseDAO.GetTotalVerseCount();
         }
     }
 }

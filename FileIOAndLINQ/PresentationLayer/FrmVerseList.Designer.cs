@@ -59,6 +59,10 @@
             rdoShowAll = new RadioButton();
             trbNumberToShow = new TrackBar();
             dgvVerseDisplay = new DataGridView();
+            txtbxSearch = new TextBox();
+            label7 = new Label();
+            lblVersesSaved = new Label();
+            label8 = new Label();
             mnsFileActions.SuspendLayout();
             grpAddVerse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudVerseImportance).BeginInit();
@@ -370,11 +374,50 @@
             dgvVerseDisplay.Size = new Size(779, 518);
             dgvVerseDisplay.TabIndex = 4;
             // 
+            // txtbxSearch
+            // 
+            txtbxSearch.Location = new Point(423, 554);
+            txtbxSearch.Name = "txtbxSearch";
+            txtbxSearch.Size = new Size(181, 23);
+            txtbxSearch.TabIndex = 5;
+            txtbxSearch.TextChanged += TxtbxSearch_TextChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(897, 562);
+            label7.Name = "label7";
+            label7.Size = new Size(134, 15);
+            label7.TabIndex = 7;
+            label7.Text = "Amount of Verses Saved";
+            // 
+            // lblVersesSaved
+            // 
+            lblVersesSaved.AutoSize = true;
+            lblVersesSaved.Location = new Point(1037, 562);
+            lblVersesSaved.Name = "lblVersesSaved";
+            lblVersesSaved.Size = new Size(38, 15);
+            lblVersesSaved.TabIndex = 8;
+            lblVersesSaved.Text = "label8";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(375, 559);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 15);
+            label8.TabIndex = 9;
+            label8.Text = "Search";
+            // 
             // FrmVerseList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1163, 762);
+            Controls.Add(label8);
+            Controls.Add(lblVersesSaved);
+            Controls.Add(label7);
+            Controls.Add(txtbxSearch);
             Controls.Add(dgvVerseDisplay);
             Controls.Add(trbNumberToShow);
             Controls.Add(grpFilterAndSort);
@@ -429,5 +472,9 @@
         private TrackBar trbNumberToShow;
         private DataGridView dgvVerseDisplay;
         private Button btnAddVerse;
+        private TextBox txtbxSearch;
+        private Label label7;
+        private Label lblVersesSaved;
+        private Label label8;
     }
 }
